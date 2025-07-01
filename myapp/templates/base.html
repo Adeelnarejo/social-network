@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Social Network</title>
+    <link rel="icon" type="image/png" href="https://d3g26xx3amwjeo.cloudfront.net/static/images/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dk7X0VfA9H7fT3NQm9zCP0t7D+hlrEVyy+P5gOyJDzC3e8mA0r+0PO5JpZyL/yGeCM4IzLhXHBuQ7m4eXlS0Dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 top-navbar sticky-top shadow-sm">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a class="navbar-brand fw-bold brand-logo" href="{% url 'home' %}">
+                <img class="main-logo" src="https://realhub.ai/themes/wondertag/img/logo.png">
+                <span class="badge bg-warning text-dark small beta-text">Beta v1.0</span>
+            </a>
+
+            <form class="d-flex mx-auto header-search-input position-relative">
+                <input type="text" class="form-control rounded-pill header-search-border pe-5" placeholder="Search..." aria-label="Search">
+                <svg class="header-search-input-icon" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                    <g clip-path="url(#clip0_4599_3900)">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2711 1.84863C9.02619 1.84874 7.79938 2.14655 6.693 2.71721C5.58661 3.28788 4.63274 4.11485 3.91097 5.12914C3.18919 6.14342 2.72044 7.31561 2.54382 8.5479C2.3672 9.7802 2.48783 11.0369 2.89565 12.213C3.30347 13.3892 3.98666 14.4508 4.88821 15.3093C5.78976 16.1678 6.88353 16.7982 8.07827 17.1479C9.273 17.4977 10.5341 17.5567 11.7562 17.32C12.9784 17.0833 14.1262 16.5577 15.104 15.7872L18.4582 19.1414C18.6314 19.3087 18.8634 19.4012 19.1042 19.3991C19.3451 19.3971 19.5754 19.3005 19.7457 19.1302C19.916 18.9599 20.0126 18.7295 20.0147 18.4887C20.0168 18.2479 19.9242 18.0159 19.7569 17.8427L16.4027 14.4885C17.3101 13.3373 17.8751 11.9539 18.033 10.4966C18.191 9.03929 17.9354 7.56697 17.2956 6.24813C16.6559 4.92929 15.6577 3.81722 14.4154 3.03917C13.1731 2.26112 11.7369 1.84853 10.2711 1.84863ZM4.3011 9.65552C4.3011 8.07219 4.93007 6.5537 6.04966 5.43411C7.16925 4.31453 8.68774 3.68555 10.2711 3.68555C11.8544 3.68555 13.3729 4.31453 14.4925 5.43411C15.6121 6.5537 16.241 8.07219 16.241 9.65552C16.241 11.2389 15.6121 12.7573 14.4925 13.8769C13.3729 14.9965 11.8544 15.6255 10.2711 15.6255C8.68774 15.6255 7.16925 14.9965 6.04966 13.8769C4.93007 12.7573 4.3011 11.2389 4.3011 9.65552Z" fill="black"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_4599_3900">
+                        <rect width="22.043" height="22.043" fill="white" transform="translate(0.626953 0.0117188)"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+            </form>
+
+        <div class="d-flex align-items-center gap-3">
+        <div class="dropdown">
+            <a href="#" class="text-white position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg style="width: 23px;height: 23px;flex-shrink: 0;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 24" fill="none">
+					<path d="M23 23.5L18.4 18.9H6.9C6.2675 18.9 5.72604 18.6748 5.27563 18.2244C4.82521 17.774 4.6 17.2325 4.6 16.6V15.45H17.25C17.8825 15.45 18.424 15.2248 18.8744 14.7744C19.3248 14.324 19.55 13.7825 19.55 13.15V5.1H20.7C21.3325 5.1 21.874 5.32521 22.3244 5.77563C22.7748 6.22604 23 6.7675 23 7.4V23.5ZM2.3 12.2013L3.65125 10.85H14.95V2.8H2.3V12.2013ZM0 17.75V2.8C0 2.1675 0.225208 1.62604 0.675625 1.17563C1.12604 0.725208 1.6675 0.5 2.3 0.5H14.95C15.5825 0.5 16.124 0.725208 16.5744 1.17563C17.0248 1.62604 17.25 2.1675 17.25 2.8V10.85C17.25 11.4825 17.0248 12.024 16.5744 12.4744C16.124 12.9248 15.5825 13.15 14.95 13.15H4.6L0 17.75Z" fill="white"></path>
+				</svg>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">2</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
+                <li><strong class="dropdown-header">Messages</strong></li>
+                <li><a class="dropdown-item" href="#">John: Hey, what's up?</a></li>
+                <li><a class="dropdown-item" href="#">Anna: New post is live!</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-center text-primary" href="#">View All</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <a href="#" class="text-white position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg style="width: 23px;height: 23px;flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg" width="21" height="22" viewBox="0 0 21 22" fill="none">
+                    <path d="M0 8.88542C0 7.14931 0.386285 5.55642 1.15885 4.10677C1.93142 2.65712 2.96875 1.45486 4.27083 0.5L5.49479 2.16667C4.45312 2.93056 3.62413 3.8941 3.00781 5.05729C2.39149 6.22049 2.08333 7.49653 2.08333 8.88542H0ZM18.75 8.88542C18.75 7.49653 18.4418 6.22049 17.8255 5.05729C17.2092 3.8941 16.3802 2.93056 15.3385 2.16667L16.5625 0.5C17.8646 1.45486 18.9019 2.65712 19.6745 4.10677C20.447 5.55642 20.8333 7.14931 20.8333 8.88542H18.75ZM2.08333 18.2604V16.1771H4.16667V8.88542C4.16667 7.44445 4.60069 6.16406 5.46875 5.04427C6.33681 3.92448 7.46528 3.19097 8.85417 2.84375V2.11458C8.85417 1.68056 9.00608 1.31163 9.3099 1.00781C9.61372 0.703993 9.98264 0.552083 10.4167 0.552083C10.8507 0.552083 11.2196 0.703993 11.5234 1.00781C11.8273 1.31163 11.9792 1.68056 11.9792 2.11458V2.84375C13.3681 3.19097 14.4965 3.92448 15.3646 5.04427C16.2326 6.16406 16.6667 7.44445 16.6667 8.88542V16.1771H18.75V18.2604H2.08333ZM10.4167 21.3854C9.84375 21.3854 9.3533 21.1814 8.94531 20.7734C8.53733 20.3655 8.33333 19.875 8.33333 19.3021H12.5C12.5 19.875 12.296 20.3655 11.888 20.7734C11.48 21.1814 10.9896 21.3854 10.4167 21.3854ZM6.25 16.1771H14.5833V8.88542C14.5833 7.73958 14.1753 6.75868 13.3594 5.94271C12.5434 5.12674 11.5625 4.71875 10.4167 4.71875C9.27083 4.71875 8.28993 5.12674 7.47396 5.94271C6.65799 6.75868 6.25 7.73958 6.25 8.88542V16.1771Z" fill="white"></path>
+                </svg>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">3</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
+                <li><strong class="dropdown-header">Notifications</strong></li>
+                <li><a class="dropdown-item" href="#">⚠️ Someone liked your post</a></li>
+                <li><a class="dropdown-item" href="#">👥 New follower: Mike</a></li>
+                <li><a class="dropdown-item" href="#">💬 Comment on your photo</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-center text-primary" href="#">View All</a></li>
+            </ul>
+        </div>
+
+
+        <a href="#" class="text-white">
+        <i class="bi bi-bell fs-5"></i>
+        </a>
+
+        <div class="dropdown">
+            <a href="#" class="text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg?semt=ais_hybrid&w=740" alt="Profile" class="rounded-circle" width="35" height="35">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+        <div class="col-md-3 vh-100 position-sticky top-0 overflow-auto d-none d-md-block">
+            <div class="left-sidebar">
+                <div class="p-3 shadow-sm left-sidebar-child">
+                <h5 class="sidebars-heading mt-3 mb-3">Main Navigation</h5>
+                <ul class="list-unstyled left-sidebar-ul">
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <svg class="me-3" style="margin-right: 22px !important" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 15" fill="none">
+                                <path d="M2.6683 0.947366C2.36381 1.05532 2.2186 1.15857 2.02185 1.41671C1.81573 1.68424 1.77357 1.87198 1.77357 2.50559V3.05473L1.36603 3.0735C0.747678 3.10636 0.38229 3.32226 0.148067 3.80568L0.0169027 4.07321L0.00284932 8.62117C-0.00651959 11.6062 0.00753377 13.2583 0.040325 13.432C0.143383 13.9952 0.518139 14.488 1.02406 14.7414L1.28171 14.8682H12.7118L12.9788 14.7414C13.3348 14.5772 13.6487 14.2768 13.8267 13.9295L13.9766 13.6479L13.9906 7.76696L14 1.88606L13.9016 1.65608C13.7892 1.39794 13.4894 1.09286 13.2177 0.96614C13.0491 0.886351 12.7305 0.881658 7.98048 0.872271C3.15549 0.862884 2.9119 0.862884 2.6683 0.947366ZM13.0209 1.88606L13.1568 2.02217V7.66371C13.1568 12.6435 13.1474 13.3193 13.0865 13.4742C12.9882 13.7042 12.8429 13.8544 12.6181 13.9576C12.4401 14.0421 12.1824 14.0468 7.02016 14.0468C1.85321 14.0468 1.60025 14.0421 1.42224 13.9576C1.20207 13.8544 1.00532 13.6573 0.935056 13.4695C0.89758 13.3803 0.883527 11.8831 0.883527 8.77136V4.20463L0.995954 4.0826C1.11775 3.95118 1.33323 3.89016 1.59088 3.91832L1.75015 3.93241L1.77357 8.42405L1.797 12.9157L1.90474 13.0236C2.05932 13.1832 2.35913 13.1691 2.50435 13.0002L2.61678 12.8687V7.49474C2.61678 1.74056 2.60741 1.93299 2.83694 1.80158C2.89316 1.76872 4.60767 1.75464 7.90084 1.74995H12.8851L13.0209 1.88606Z" fill="#f7c948"></path>
+                                <path d="M3.66122 2.75424L3.53006 2.86689L3.51601 4.56123L3.50195 6.25087L3.64249 6.40576L3.77834 6.56064L5.34294 6.57472C6.2002 6.58411 6.97313 6.57472 7.06214 6.56064C7.14646 6.54187 7.26825 6.48085 7.32915 6.41984L7.44158 6.30719V4.63632C7.44158 2.9279 7.43221 2.83403 7.25889 2.70262C7.20267 2.66038 6.74828 2.6463 5.48816 2.6416H3.79239L3.66122 2.75424ZM6.58901 4.59877L6.59838 5.69235H4.39668V3.48642L5.48816 3.49581L6.57496 3.50989L6.58901 4.59877ZM8.43468 3.56152C8.32226 3.64131 8.29883 3.76334 8.38784 3.85251C8.46747 3.9323 12.1307 3.9323 12.2104 3.85251C12.2994 3.76334 12.2759 3.64131 12.1635 3.56152C12.0745 3.49581 11.8169 3.48642 10.2991 3.48642C8.78133 3.48642 8.52369 3.49581 8.43468 3.56152ZM8.43468 4.87569C8.30352 4.96486 8.30352 5.10567 8.43468 5.19484C8.59396 5.30749 12.0042 5.30749 12.1635 5.19484C12.2197 5.1573 12.2666 5.0822 12.2666 5.03527C12.2666 4.98833 12.2197 4.91324 12.1635 4.87569C12.0745 4.80998 11.8169 4.80059 10.2991 4.80059C8.78133 4.80059 8.52369 4.80998 8.43468 4.87569ZM8.46747 6.18047C8.31757 6.25557 8.29883 6.41514 8.43468 6.50901C8.52837 6.57472 8.7626 6.58411 10.2991 6.58411C11.8356 6.58411 12.0698 6.57472 12.1635 6.50901C12.2994 6.41514 12.2806 6.25557 12.126 6.17578C11.9621 6.09599 8.63143 6.09599 8.46747 6.18047ZM3.56285 7.53219C3.47385 7.62136 3.49727 7.74339 3.6097 7.82318C3.70338 7.88889 4.18588 7.89828 7.8866 7.89828C11.5873 7.89828 12.0698 7.88889 12.1635 7.82318C12.2759 7.74339 12.2994 7.62136 12.2104 7.53219C12.1307 7.4524 3.64249 7.4524 3.56285 7.53219ZM3.54411 8.91206C3.49258 9.02001 3.49727 9.04817 3.59564 9.12327C3.6987 9.20775 3.86266 9.21244 7.88192 9.21244C11.5873 9.21244 12.0698 9.20306 12.1635 9.13735C12.2759 9.05756 12.2994 8.93553 12.2104 8.84635C12.1682 8.80411 11.1423 8.79003 7.87723 8.79003H3.60033L3.54411 8.91206ZM3.54411 10.2215C3.50195 10.3201 3.50664 10.353 3.5769 10.4327C3.66122 10.5219 3.72212 10.5266 5.47879 10.5266C7.06682 10.5266 7.30573 10.5172 7.36663 10.4515C7.45563 10.367 7.465 10.2403 7.38537 10.1605C7.34321 10.1183 6.85134 10.1042 5.46474 10.1042H3.60033L3.54411 10.2215ZM8.38784 10.1605C8.3082 10.2403 8.31757 10.367 8.40658 10.4515C8.46748 10.5172 8.70638 10.5266 10.2991 10.5266C11.8918 10.5266 12.1307 10.5172 12.1916 10.4515C12.2806 10.367 12.29 10.2403 12.2104 10.1605C12.1307 10.0807 8.46747 10.0807 8.38784 10.1605ZM3.54411 11.5357C3.50195 11.6343 3.50664 11.6671 3.5769 11.7469C3.66122 11.8361 3.72212 11.8408 5.47879 11.8408C7.06682 11.8408 7.30573 11.8314 7.36663 11.7657C7.45563 11.6812 7.465 11.5545 7.38537 11.4747C7.34321 11.4325 6.85134 11.4184 5.46474 11.4184H3.60033L3.54411 11.5357ZM8.38784 11.4747C8.3082 11.5545 8.31757 11.6812 8.40658 11.7657C8.46748 11.8314 8.70638 11.8408 10.2991 11.8408C11.8918 11.8408 12.1307 11.8314 12.1916 11.7657C12.2806 11.6812 12.29 11.5545 12.2104 11.4747C12.1307 11.3949 8.46747 11.3949 8.38784 11.4747ZM3.55348 12.8217C3.4879 12.9484 3.49258 12.9954 3.58159 13.0799C3.64249 13.1456 3.88139 13.155 5.45537 13.155C6.61243 13.155 7.29168 13.1362 7.35258 13.108C7.45095 13.0517 7.46969 12.8733 7.38537 12.7889C7.34321 12.7466 6.85134 12.7325 5.46474 12.7325C3.67059 12.7325 3.60033 12.7372 3.55348 12.8217ZM8.38784 12.7889C8.3082 12.8686 8.31757 12.9954 8.40658 13.0799C8.46748 13.1456 8.70638 13.155 10.2991 13.155C11.8918 13.155 12.1307 13.1456 12.1916 13.0799C12.2806 12.9954 12.29 12.8686 12.2104 12.7889C12.1307 12.7091 8.46747 12.7091 8.38784 12.7889Z" fill="#f7c948"></path>
+                            </svg>
+                            News Feed
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 21" fill="none">
+                                <mask id="mask0_4292_2877" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21">
+                                    <rect y="0.5" width="20" height="20" fill="#D9D9D9"></rect>
+                                </mask>
+                                <g mask="url(#mask0_4292_2877)">
+                                    <path d="M5.00065 16.333H15.0007V14.6663H5.00065V16.333ZM5.00065 12.9997H15.0007V11.333H5.00065V12.9997ZM5.00065 9.66634H15.0007V8.91634L13.7923 7.99967H6.20898L5.00065 8.91634V9.66634ZM8.37565 6.33301H11.6257L10.0007 5.10384L8.37565 6.33301ZM3.33398 17.9997V10.1872L1.83398 11.333L0.833984 9.99967L3.33398 8.08301V5.49967H5.00065V6.81217L10.0007 2.99967L19.1673 9.99967L18.1673 11.3122L16.6673 10.1872V17.9997H3.33398ZM3.33398 4.66634C3.33398 3.9719 3.57704 3.38162 4.06315 2.89551C4.54926 2.4094 5.13954 2.16634 5.83398 2.16634C6.0701 2.16634 6.26801 2.08648 6.42773 1.92676C6.58746 1.76704 6.66732 1.56912 6.66732 1.33301H8.33398C8.33398 2.02745 8.09093 2.61773 7.60482 3.10384C7.11871 3.58995 6.52843 3.83301 5.83398 3.83301C5.59787 3.83301 5.39996 3.91287 5.24023 4.07259C5.08051 4.23231 5.00065 4.43023 5.00065 4.66634H3.33398Z" fill="#f7c948"></path>
+                                </g>
+                            </svg>
+                            My Properties
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'open-house' %}">
+                            <svg class="me-3" style="margin-right:14px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 21" fill="none">
+                                <mask id="mask0_4292_2886" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21">
+                                    <rect y="0.5" width="20" height="20" fill="#D9D9D9"></rect>
+                                </mask>
+                                <g mask="url(#mask0_4292_2886)">
+                                    <path d="M2.5 16.3359V9.46094L6.7 5.33594L10.9 9.46094V16.3359H2.5ZM3.9 14.9609H6V12.8984H7.4V14.9609H9.5V10.0281L6.7 7.27813L3.9 10.0281V14.9609ZM6 11.5234V10.1484H7.4V11.5234H6ZM12.3 16.3359V8.89375L8.6775 5.33594H10.655L13.7 8.32656V16.3359H12.3ZM15.1 16.3359V7.75938L12.6325 5.33594H14.61L16.5 7.19219V16.3359H15.1Z" fill="#f7c948"></path>
+                                </g>
+                            </svg>
+                            Open House
+                        </a>
+                    </li>
+            </ul>
+                <button id="themeToggle" class="btn btn-sm btn-outline-light">
+                  Toggle Mode
+                </button>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div class="col-md-3 vh-100 position-sticky top-0 overflow-auto d-none d-md-block">
+            <div class="left-sidebar">
+                <div class="p-3 shadow-sm left-sidebar-child">
+                    <h5 class="sidebars-heading">Right Sidebar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <script>
+      // Load mode from localStorage
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentMode = localStorage.getItem("theme");
+        if (currentMode === "dark") {
+          document.body.classList.add("dark-mode");
+          document.querySelectorAll('.card, .navbar').forEach(el => el.classList.add("dark-mode"));
+        }
+
+        // Toggle button action
+        document.getElementById("themeToggle").addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+          document.querySelectorAll('.card, .navbar').forEach(el => el.classList.toggle("dark-mode"));
+
+          // Save to localStorage
+          if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+          } else {
+            localStorage.setItem("theme", "light");
+          }
+        });
+      });
+        </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

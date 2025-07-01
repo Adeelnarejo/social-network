@@ -1,0 +1,21 @@
+<div class="card shadow-sm mb-4 rounded-3">
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="d-flex align-items-start mb-3">
+        <img src="https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg?semt=ais_hybrid&w=740"
+             class="rounded-circle me-3" width="45" height="45" alt="User">
+        {{ form.content }}
+      </div>
+
+      <div class="mb-2">
+        <label for="id_image" class="form-label small">Upload Image (optional):</label>
+        {{ form.image }}
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary btn-sm rounded-pill px-4">Post</button>
+      </div>
+    </form>
+  </div>
+</div>
