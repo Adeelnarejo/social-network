@@ -1,0 +1,30 @@
+<div class="col-md-3 vh-100 position-sticky top-0 overflow-auto d-none d-md-block">
+    <div class="left-sidebar">
+        <div class="p-3 shadow-sm left-sidebar-child">
+            <h5 class="sidebars-heading">Right Sidebar</h5>
+            <nav class="sidebar ifrmRdarCol" id="ifrmRdarCol">
+
+                <iframe src="https://radar.realhub.ai/?username=IKjBzjY/mp/scX/g/Uo/Fw==&amp;theme=light" width="100%" height="400px" frameborder="0" allow="geolocation" id="radarIFrame"></iframe>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var contactButton = document.getElementById('contactonlinebutton');
+                        if (contactButton) {
+                            contactButton.addEventListener('click', function() {
+                                var div = document.getElementById('radarhidedivchat');
+                                var button = document.getElementById('contactonlinebuttonicon');
+                                div.style.display = div.style.display === 'none' ? 'flex' : 'none';
+                                if (div.style.display === 'flex') {
+                                    button.style.transform = 'rotate(88deg)';
+                                } else {
+                                    button.style.transform = 'rotate(270deg)';
+                                }
+                            });
+                        } else {
+                            console.error('Element with ID "contactonlinebutton" not found.');
+                        }
+                    });
+                </script>
+            </nav>
+        </div>
+    </div>
+</div>

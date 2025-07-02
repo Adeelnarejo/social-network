@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <ul class="nav nav-tabs" id="tabMenu" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab">Tab 1</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab">Tab 2</button>
+    </li>
+  </ul>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="tab-content mt-3" id="tabContent">
+      <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+        <h4 class="mb-3">Event Details</h4>
+
+        <div class="mb-3">
+          <label for="eventName" class="form-label">Event Name</label>
+          <input type="text" class="form-control" id="eventName" name="event_name" placeholder="Enter event name">
+        </div>
+
+        <div class="mb-3">
+          <label for="eventLocation" class="form-label">Event Location</label>
+          <input type="text" class="form-control" id="eventLocation" name="event_location" placeholder="Enter event location">
+        </div>
+
+        <div class="mb-3">
+          <label for="startDateTime" class="form-label">Start Date & Time</label>
+          <input type="datetime-local" class="form-control" id="startDateTime" name="start_datetime">
+        </div>
+
+        <div class="mb-3">
+          <label for="endDateTime" class="form-label">End Date & Time</label>
+          <input type="datetime-local" class="form-control" id="endDateTime" name="end_datetime">
+        </div>
+
+        <div class="mb-3">
+          <label for="eventImage" class="form-label">Event Image</label>
+          <input type="file" class="form-control" id="eventImage" name="event_image" accept="image/*">
+        </div>
+
+        <button class="btn btn-primary next-btn" type="button">Next</button>
+      </div>
+
+          <div class="tab-pane fade" id="tab2" role="tabpanel">
+        <h4 class="mb-3">Event Description</h4>
+
+        <div class="mb-3">
+          <label for="eventDescription" class="form-label">Description</label>
+          <textarea class="form-control" id="eventDescription" name="event_description" rows="5" placeholder="Write a detailed description of the event..."></textarea>
+        </div>
+
+        <button class="btn btn-secondary prev-btn" type="button">Previous</button>
+        <button class="btn btn-success" id="submit-btn" type="submit">Submit</button>
+      </div>
+
+    </div>
+</form>
+
+  <script>
+  const tabTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tab"]'));
+
+  function showTab(index) {
+    const tab = new bootstrap.Tab(tabTriggerList[index]);
+    tab.show();
+  }
+
+  document.querySelectorAll('.next-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+    const activeIndex = tabTriggerList.findIndex(tab => tab.classList.contains('active'));
+    if (activeIndex < tabTriggerList.length - 1) {
+      showTab(activeIndex + 1);
+    }
+    });
+  });
+
+  document.querySelectorAll('.prev-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+    const activeIndex = tabTriggerList.findIndex(tab => tab.classList.contains('active'));
+      if (activeIndex > 0) {
+        showTab(activeIndex - 1);
+      }
+    });
+  });
+
+
+
+  </script>
+
+{% endblock %}

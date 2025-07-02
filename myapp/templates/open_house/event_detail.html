@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow">
+    {% if event.event_image %}
+      <img src="{{ event.event_image.url }}" class="card-img-top" alt="Event Image">
+    {% endif %}
+    <div class="card-body">
+      <h3 class="card-title">{{ event.event_name }}</h3>
+      <p class="card-text"><strong>Location:</strong> {{ event.event_location }}</p>
+      <p class="card-text"><strong>Start:</strong> {{ event.start_datetime|date:"M d, Y H:i" }}</p>
+      <p class="card-text"><strong>End:</strong> {{ event.end_datetime|date:"M d, Y H:i" }}</p>
+      <p class="card-text"><strong>Description:</strong> {{ event.event_description }}</p>
+      <a href="{% url 'open-house' %}" class="btn btn-secondary mt-3">Back to Events</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <div class="open-house-heading">
+            <div class="top-heading">
+                <h4>Open House</h4>
+            </div>
+            <div class="top-heading open-house-top-search-input ">
+                <input type="text" id="product-text">
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <div class="row mt-4 bg-white p-2 rounded-16">
+                <div class="col">
+                    <a href="{% url 'create-open-house' %}">
+                        <span class="color-black fs-13 fw-600">Create Open House</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'open-house' %}">
+                        <span class="color-black fs-13 fw-600">My Open House</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mt-3">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for event in events %}
+                    <div class="col">
+                        <a href="{% url 'event-detail' event.pk %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                {% if event.event_image %}
+                                    <img src="{{ event.event_image.url }}" class="card-img-top" alt="Event Image">
+                                    {% else %}
+                                    <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="No Image">
+                                {% endif %}
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ event.event_name }}</h5>
+                                    <p class="card-text">
+                                    <strong>Location:</strong> {{ event.event_location }}<br>
+                                    <strong>Start:</strong> {{ event.start_datetime|date:"M d, Y H:i" }}<br>
+                                    <strong>End:</strong> {{ event.end_datetime|date:"M d, Y H:i" }}<br>
+                                    <strong>Description:</strong> {{ event.event_description|truncatechars:100 }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p>No events available.</p>
+                {% endfor %}
+              </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}

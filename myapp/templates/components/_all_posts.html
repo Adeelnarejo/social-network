@@ -2,44 +2,74 @@
   <div class="card mb-3 shadow-sm rounded-3">
     <div class="card-body">
 
-      <!-- 🧑 User Info -->
       <div class="d-flex align-items-start mb-2">
         <img src="https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg?semt=ais_hybrid&w=740"
-             alt="User" class="rounded-circle me-2" width="45" height="45">
-        <div>
-          <h6 class="mb-0 fw-bold">{{ post.user.username }}</h6>
-          <small class="text-muted">{{ post.created_at|date:"d M, h:i A" }}</small>
-        </div>
+        alt="User" class="rounded-circle me-2" width="45" height="45">
+      <div>
+        <h6 class="mb-0 fw-bold">{{ post.user.username }}</h6>
+        <small class="text-muted">{{ post.created_at|date:"d M, h:i A" }}</small>
       </div>
+    </div>
 
-      <!-- 📝 Post Content -->
-      {% if post.content %}
-        <p class="mb-2">{{ post.content }}</p>
-      {% endif %}
+    {% if post.content %}
+      <p class="mb-2">{{ post.content }}</p>
+    {% endif %}
 
-      <!-- 🖼️ Image -->
     {% if post.image %}
       <img src="{{ post.image.url }}" class="post-image-fixed mb-2" alt="Post Image">
     {% endif %}
 
 
-      <!-- 👍 Reactions -->
-      <hr class="my-2">
-      <div class="d-flex justify-content-between text-muted px-1">
-        <a href="#" class="text-decoration-none d-flex align-items-center gap-1">
+    <hr class="my-2">
+    <div class="d-flex justify-content-between text-muted px-1">
+       <a href="#" class="like-btn text-decoration-none d-flex align-items-center gap-1" data-post-id="{{ post.id }}">
           <i class="fa-regular fa-thumbs-up"></i>
-          <small>Like</small>
+         <small>Like</small>
+          <small class="like-text">{{ post.total_likes }}</small>
         </a>
-        <a href="#" class="text-decoration-none d-flex align-items-center gap-1">
-          <i class="fa-regular fa-comment"></i>
-          <small>Comment</small>
-        </a>
-        <a href="#" class="text-decoration-none d-flex align-items-center gap-1">
-          <i class="fa-regular fa-share-from-square"></i>
-          <small>Share</small>
-        </a>
-      </div>
+      <a href="#" class="text-decoration-none d-flex align-items-center gap-1">
+        <i class="fa-regular fa-comment"></i>
+        <small>Comment</small>
+      </a>
+      <a href="#" class="text-decoration-none d-flex align-items-center gap-1">
+        <i class="fa-regular fa-share-from-square"></i>
+        <small>Share</small>
+      </a>
+    </div>
 
     </div>
   </div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.like-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const postId = this.dataset.postId;
+
+      fetch(`/like/${postId}/`, {
+        method: 'GET',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.querySelector('.like-text').textContent = data.total_likes;
+        if (data.liked) {
+          this.querySelector('i').classList.remove('fa-regular');
+          this.querySelector('i').classList.add('fa-solid');
+        } else {
+          this.querySelector('i').classList.remove('fa-solid');
+          this.querySelector('i').classList.add('fa-regular');
+        }
+      });
+    });
+  });
+});
+</script>
+
 {% endfor %}
